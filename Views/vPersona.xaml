@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jcajamarcaTS5.Views.vPersona"
+             Title="vPersona">
+    <VerticalStackLayout>
+        <Label 
+       Text="BASE DE DATOS: PERSONA"
+       FontSize="20"
+       HorizontalTextAlignment="Center"/>
+
+        <Entry x:Name="txtPersona"
+          Placeholder="Ingrese un nombre"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnAgregar"
+               Text="Agregar/Actualizar"
+               Grid.Row="0"
+               Grid.Column="0"
+               Clicked="btnAgregar_Clicked"
+               WidthRequest="150"
+               HeightRequest="40"
+               CornerRadius="30"
+               Margin="5"/>
+            <Label x:Name="lblStatus"
+              Grid.Row="1"
+              Grid.Column="0"/>
+
+            <Button x:Name="btnObtener"
+               Text="Listar personas"
+               Grid.Row="2"
+               Grid.Column="0"
+               Clicked="btnObtener_Clicked"
+               WidthRequest="150"
+               HeightRequest="40"
+               CornerRadius="30"
+               Margin="5"/>
+            <CollectionView x:Name="Listapersonas"
+                       Grid.Row="3"
+                       Grid.Column="0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Id}" Grid.Column="0"
+                                   Margin="15"/>
+                            <Label Text="{Binding Name}" Grid.Column="1"
+                                   Margin="15"/>
+                            <Button x:Name="btnEditar" Text="Editar" Clicked="btnEditar_Clicked" 
+                                    CommandParameter="{Binding .}" Grid.Column="2"
+                                    WidthRequest="100"
+                                    HeightRequest="40"
+                                    CornerRadius="30"
+                                    Margin="5"
+                                    TextColor="DarkBlue"
+                                    BackgroundColor="Transparent"
+                                    FontSize="16"/>
+                            <Button x:Name="btnEliminar" Text="Eliminar" Clicked="btnEliminar_Clicked" 
+                                    WidthRequest="100"
+                                    HeightRequest="40"
+                                    CornerRadius="30"
+                                    Margin="5"
+                                    CommandParameter="{Binding .}" Grid.Column="3"
+                                    TextColor="DarkBlue"
+                                    BackgroundColor="Transparent"
+                                    FontSize="16"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
